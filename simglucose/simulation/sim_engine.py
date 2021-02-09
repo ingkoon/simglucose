@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 class SimObj(object):
     def __init__(self,
+    
                  env,
                  controller,
                  sim_time,

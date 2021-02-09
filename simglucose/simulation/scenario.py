@@ -6,7 +6,7 @@ from datetime import timedelta
 logger = logging.getLogger(__name__)
 Action = namedtuple('scenario_action', ['meal'])
 
-
+#시나리오 객체생성
 class Scenario(object):
     def __init__(self, start_time=None):
         if start_time is None:
@@ -17,7 +17,7 @@ class Scenario(object):
                                           datetime.min.time()) + start_hour
             print('Simulation start time is set to {}.'.format(start_time))
         self.start_time = start_time
-
+        print(start_time)
     def get_action(self, t):
         raise NotImplementedError
 

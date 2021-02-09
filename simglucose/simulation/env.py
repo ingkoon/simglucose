@@ -6,6 +6,11 @@ import logging
 from collections import namedtuple
 from simglucose.simulation.rendering import Viewer
 
+#kafka
+from kafka import KafkaProducer
+from json import dumps
+import time
+
 try:
     from rllab.envs.base import Step
 except ImportError:
@@ -60,6 +65,7 @@ class T1DSimEnv(object):
         # next observation
         BG = self.patient.observation.Gsub
         CGM = self.sensor.measure(self.patient)
+ 
 
         return CHO, insulin, BG, CGM
 

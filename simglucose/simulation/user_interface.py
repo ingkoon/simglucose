@@ -16,9 +16,9 @@ from datetime import datetime
 from datetime import timedelta
 import platform
 
-
 logger = logging.getLogger(__name__)
-
+ 
+#환자정보, 센서정보, 인슐린 펌프 정보가 저장된 파일 변수에 할당
 PATIENT_PARA_FILE = pkg_resources.resource_filename(
     'simglucose', 'params/vpatient_params.csv')
 SENSOR_PARA_FILE = pkg_resources.resource_filename(
@@ -26,7 +26,7 @@ SENSOR_PARA_FILE = pkg_resources.resource_filename(
 INSULIN_PUMP_PARA_FILE = pkg_resources.resource_filename(
     'simglucose', 'params/pump_params.csv')
 
-
+#환자 선정 함수
 def pick_patients():
     patient_params = pd.read_csv(PATIENT_PARA_FILE)
     while True:
@@ -253,11 +253,12 @@ def create_sim_instance(sim_time=None,
                         save_path=None,
                         animate=True):
     if sim_time is None:
-        sim_time = timedelta(hours=float(
-            input('Input simulation time (hr): ')))
+        #입력받은 시간을 시간값으로 할당
+        sim_time = timedelta(hours=float(input('Input simulation time (hr): ')))
 
     if scenario is None:
         scenario = pick_scenario()
+
     envs = build_envs(scenario, start_time)
 
     if controller is None:
